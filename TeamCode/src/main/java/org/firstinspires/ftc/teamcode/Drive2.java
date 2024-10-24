@@ -268,10 +268,10 @@ public class Drive2 extends LinearOpMode {
 
         /*Arm Power*/
         public void armUp() {
-            armDrive.setPower(-0.4); //was -0.15
+            armDrive.setPower(-0.1); //was -0.15
         }
         public void armDown() {
-            armDrive.setPower(0.4);//was 0.15
+            armDrive.setPower(0.1);//was 0.15
         }
         public void armStop(){
             armDrive.setPower(0);// stop arm
@@ -316,11 +316,11 @@ public class Drive2 extends LinearOpMode {
         /*Slides Up/Down*/
         public void slidesUp() {
             rightSlide.setPower(0.5);
-            leftSlide.setPower(0.5);
+            leftSlide.setPower(-0.5);
         }
         public void slidesDown() {
-            rightSlide.setPower(-0.1);
-            leftSlide.setPower(-0.1);
+            rightSlide.setPower(-0.5);
+            leftSlide.setPower(0.5);
         }
         public void slidesStop() {
             rightSlide.setPower(0);
