@@ -292,11 +292,11 @@ public class Drive2 extends LinearOpMode {
         /*Open/close gripper*/
         public void gripperSwitch() {
             if (gripperClosed==true) {
-                gripper.setPosition(0.95); //close
+                gripper.setPosition(0.5); //close
                 gripperClosed=false;
             }
             else {
-                gripper.setPosition(0.1); //open
+                gripper.setPosition(0); //open
                 gripperClosed=true;
             }
         }
@@ -304,7 +304,7 @@ public class Drive2 extends LinearOpMode {
         /*Servo arm go up/down*/
         public void gripperAngleSwitch() {
             if (gripperAngleUp==true) {
-                gripperAngle.setPosition(0.345); //go down
+                gripperAngle.setPosition(1); //go down
                 gripperAngleUp=false;
             }
             else {
