@@ -70,6 +70,8 @@ public class Drive2 extends LinearOpMode {
     public boolean gripperAngleUp;
     public boolean gripperClosed;
 
+    public double slidesPower;
+
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -81,12 +83,10 @@ public class Drive2 extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         MecanumDrive drive = new MecanumDrive(hardwareMap, new Pose2d(0, 0, 0));
 
-
-        frontLeftDrive  = hardwareMap.get(DcMotor.class, "Front Left");          //TODO: Correct naming
+        frontLeftDrive  = hardwareMap.get(DcMotor.class, "Front Left");
         frontRightDrive = hardwareMap.get(DcMotor.class, "Front Right");
         backLeftDrive  = hardwareMap.get(DcMotor.class, "Back Left");
         backRightDrive = hardwareMap.get(DcMotor.class, "Back Right");
-
 
         armDrive = hardwareMap.get(DcMotor.class, "Arm");
         armSlide = hardwareMap.get(DcMotor.class, "Arm Slide");
@@ -120,7 +120,7 @@ public class Drive2 extends LinearOpMode {
 
 
         armDrive.setDirection(DcMotor.Direction.FORWARD);
-        armSlide.setDirection(DcMotor.Direction.FORWARD);
+        armSlide.setDirection(DcMotor.Direction.REVERSE);
 
 
         armDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -167,6 +167,8 @@ public class Drive2 extends LinearOpMode {
                     -gamepad1.right_stick_x
             ));
 
+            slidesPower = gamepad2.left_stick_y;
+
             //Arm Controls with dpad
             if ((gamepad2.dpad_right == true)) {//&& (topLimit.getState()== true)){
                 //third level
@@ -205,7 +207,7 @@ public class Drive2 extends LinearOpMode {
                 }
             }
 
-            //Slides up/down with D-Pad
+            /*Slides up/down with D-Pad
             if (gamepad2.dpad_up) {
                 slidesUp();
             }else{
@@ -213,7 +215,10 @@ public class Drive2 extends LinearOpMode {
                     slidesDown();
                 }else{
                     slidesStop();
-                }}
+                }}*/
+
+            rightSlide.setPower(slidesPower);
+            leftSlide.setPower(slidesPower);
 
 
                 //Gripper closes/opens with X
