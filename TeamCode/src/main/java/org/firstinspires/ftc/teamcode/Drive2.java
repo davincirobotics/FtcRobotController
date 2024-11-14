@@ -71,6 +71,7 @@ public class Drive2 extends LinearOpMode {
     public boolean gripperClosed;
 
     public double slidesPower;
+    public double armPower;
 
     @Override
     public void runOpMode() {
@@ -168,6 +169,7 @@ public class Drive2 extends LinearOpMode {
             ));
 
             slidesPower = gamepad2.left_stick_y;
+            armPower = gamepad2.right_stick_y;
 
             //Arm Controls with dpad
             if ((gamepad2.dpad_right == true)) {//&& (topLimit.getState()== true)){
@@ -219,6 +221,8 @@ public class Drive2 extends LinearOpMode {
 
             rightSlide.setPower(slidesPower);
             leftSlide.setPower(slidesPower);
+
+            armDrive.setPower(armPower);
 
 
                 //Gripper closes/opens with X
