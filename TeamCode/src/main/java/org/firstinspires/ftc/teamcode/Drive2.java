@@ -121,7 +121,7 @@ public class Drive2 extends LinearOpMode {
 
 
         armDrive.setDirection(DcMotor.Direction.FORWARD);
-        armSlide.setDirection(DcMotor.Direction.REVERSE);
+        armSlide.setDirection(DcMotor.Direction.FORWARD);
 
 
         armDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -219,10 +219,10 @@ public class Drive2 extends LinearOpMode {
                     slidesStop();
                 }}*/
 
-            rightSlide.setPower(slidesPower);
-            leftSlide.setPower(slidesPower);
+            rightSlide.setPower(slidesPower/2);
+            leftSlide.setPower(-slidesPower/2);
 
-            armDrive.setPower(armPower);
+            armDrive.setPower(armPower*0.75);
 
 
                 //Gripper closes/opens with X
@@ -244,7 +244,8 @@ public class Drive2 extends LinearOpMode {
                 telemetry.addData("Path0",  "Front Left at %7d",frontLeftDrive.getCurrentPosition());
                 telemetry.addData("Path0",  "Back Right at %7d",backRightDrive.getCurrentPosition());
                 telemetry.addData("Path0",  "Back Left at %7d",backLeftDrive.getCurrentPosition());
-                telemetry.addData("Gripper left", String.format("position=%.2f", gripper.getPosition()));
+            //telemetry.addData("Path0",  "ls at %7d",gamepad2.left_stick_y);
+            telemetry.addData("Gripper left", String.format("position=%.2f", gripper.getPosition()));
                 //telemetry.addLine("Distance Sensor at "+distance.getDistance(DistanceUnit.CM));
                 telemetry.addLine("welcome to the future ");
                 telemetry.update();
@@ -301,7 +302,7 @@ public class Drive2 extends LinearOpMode {
         /*Open/close gripper*/
         public void gripperSwitch() {
             if (gripperClosed==true) {
-                gripper.setPosition(0.5); //close
+                gripper.setPosition(1.0); //close
                 gripperClosed=false;
             }
             else {
@@ -313,7 +314,7 @@ public class Drive2 extends LinearOpMode {
         /*Servo arm go up/down*/
         public void gripperAngleSwitch() {
             if (gripperAngleUp==true) {
-                gripperAngle.setPosition(1); //go down
+                gripperAngle.setPosition(0.45); //go down
                 gripperAngleUp=false;
             }
             else {

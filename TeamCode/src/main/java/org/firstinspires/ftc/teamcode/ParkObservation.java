@@ -36,7 +36,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 
 @Autonomous(name="ParkObservation", group="Linear Opmode")
 
-public class BlueLeftPurpleAndYellow extends LinearOpMode {
+public class ParkObservation extends LinearOpMode {
 
 	// Declare OpMode members.
 	private ElapsedTime runtime = new ElapsedTime();
@@ -83,7 +83,7 @@ public class BlueLeftPurpleAndYellow extends LinearOpMode {
 		gripperAngle = hardwareMap.get(Servo.class, "Gripper Angle");
 		gripper = hardwareMap.get(Servo.class, "Gripper");
 
-		distance = hardwareMap.get(DistanceSensor.class, "sensor_distance");
+		//distance = hardwareMap.get(DistanceSensor.class, "sensor_distance");
 		
 		frontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
 		frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
