@@ -56,7 +56,7 @@ public class BlueLeftPurpleAndYellow extends LinearOpMode {
 
 	DistanceSensor distance;
 
-	public double robotSpeed=0.3;
+	public double robotSpeed=0.5;
 
 	public double encoderPulses; //number of ticks needed to move
 	public double wheelCircumference = 30.159; //circumference of wheel
@@ -121,9 +121,7 @@ public class BlueLeftPurpleAndYellow extends LinearOpMode {
 			//telemetry.addLine("lowered gripper");
 			//telemetry.update();
 			
-                        rotateVer2(90,1,0.25);
-			moveForwardCM(100.0);
-			sleep(500);
+			moveForwardCM(50.0);
 		}
 	}
 		
