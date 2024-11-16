@@ -231,12 +231,20 @@ public class Drive2 extends LinearOpMode {
                     gripperPreviouslyPressed=true;
                 } else { gripperPreviouslyPressed = false; }
 
-                //Gripper angle cycles up/down with A
+                /*Gripper angle cycles up/down with A
                 if (gamepad2.a==true){
                     if (!gripperAnglePreviouslyPressed) { gripperAngleSwitch(); }
                     gripperAnglePreviouslyPressed=true;
-                } else { gripperAnglePreviouslyPressed = false; }
+                } else { gripperAnglePreviouslyPressed = false; }*/
 
+                //Gripper Angle Cycle Through Three Things
+                      if (gamepad2.y) {
+                    gripperAnglePos(0);
+                }else if (gamepad2.b) {
+                    gripperAnglePos(1);
+                }else if (gamepad2.a) {
+                    gripperAnglePos(2);
+                }
 
                 //Display Information
                 telemetry.addData("Path0",  "ArmDrive at %7d",armDrive.getCurrentPosition());
@@ -278,7 +286,7 @@ public class Drive2 extends LinearOpMode {
         /*Arm Power*/
         public void armUp() {
             armDrive.setPower(-0.1); //was -0.15
-        }
+            }
         public void armDown() {
             armDrive.setPower(0.1);//was 0.15
         }
@@ -319,6 +327,19 @@ public class Drive2 extends LinearOpMode {
             else {
                 gripperAngle.setPosition(0);   //go up
                 gripperAngleUp=true;
+            }
+        }
+
+        /*Servo arm 3 stages*/
+        public void gripperAnglePos(int positionNumber) {
+            if (positionNumber==0) {
+                gripperAngle.setPosition(0);
+            }
+            else if (positionNumber==1) {
+                gripperAngle.setPosition(0.5);
+            }
+            else if (positionNumber==2) {
+                gripperAngle.setPosition(1);
             }
         }
 
